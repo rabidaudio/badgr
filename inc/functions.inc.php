@@ -31,8 +31,15 @@ function get_user_info($userid, $eventid){
 function log_connection($eventid,$targetid,$scannerid, $comments){
 
 	$eventdb=get_db_name($eventid);
-	$insert_query= "INSERT into `$eventdb` (`scanner_id`,`target_id`,`ip_addr`, `timestamp`, `user_agent`, `comments`) VALUES ('$scannerid', '$targetid', '$_SERVER['REMOTE_ADDR']', NOW(), $_SERVER['HTTP_USER_AGENT']','$comments);";
+	$ip_addr=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
+	$user_agent=mysql_real_escape_string($_SERVER['HTTP_USER_AGENT']);
+	$comments = mysql_real_escape_string($comments);
+	$targetid=mysql_real_escape_string($targetid);
+	if ($scannerid != NULL){
+		$cannerid=mysql_real_escape_string($scannerid);
+	}
 
-	mysql_query($insert_query) or die('could not log: '.mysql_error());
-	return true;
+	$insert_query = "INSERT into `$eventdb` (`scanner_id`,`target_id`,`ip_addr`, `timestamp`, `user_agent`, `comments`) VALUES ('$scannerid', '$targetid', '$ip_addr', NOW(), '$user_agent','$comments')";
+	echo $insert_query;
+	//mysql_query($insert_query) or die('could not log: '.mysql_error());
 }
