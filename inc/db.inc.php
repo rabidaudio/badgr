@@ -1,5 +1,5 @@
 <?php
-$mysql_host = 'localhost';
+$mysql_host = 'passionpathco.domaincommysql.com';
 $mysql_user = 'badger';
 $mysql_password = 'InTheKitchen11.';
 $mysql_database = 'badger';
