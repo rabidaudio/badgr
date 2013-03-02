@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Contact;iPhone;;;
+FN:iPhone Contact
+EMAIL;type=INTERNET;type=WORK;type=pref:iphone@mobicontact.info
+TEL;type=CELL;type=VOICE;type=pref:012-345-6789
+END:VCARD
